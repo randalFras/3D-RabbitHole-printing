@@ -1,156 +1,126 @@
-/* .
-This is a dark-mode theme vyper for mainsail
+/* 
+https://github.com/Turbine1991/mainsail-theme-elegance
+
+Mainsail Elegance Theme v1.0
+Change `linear-gradient` to adjust nav + background colours.
 */
 
-:root {
-    --Primary:        #282a36;    /*Voron:Black*/
-    --Secondary:      #ff5555;    /*Voron:Red*/
-    --c_blue:         #00eafb;    /*cryd_blue*/
-    --c_gray:         #2b2b2b;    /*cryd:grey*/
-    --Blue:           #00eafb; 
-    --Red:            #ff5555;
-    --Warnings:       #00eafb;
-    --Text:           #f8f8f2;
-    --DarkerText:     #f5f5f2;
-    --Background:     #44475a;
-    --DarkBackground: #282a36;
-    --Toolbars:       #44475a;
-    --Sheets:         #282a36;   
+
+/* Desktop background */
+@media screen and (min-width:450px) {
+    .main-content-scrollbar {
+        height:var(--app-height);
+        padding-top: 64px;
+    }
+
+    ::-webkit-scrollbar {
+        background-color: #272727;
+        width: inherit;
+        height: inherit;
+    }
+
+    /* Comment this if you enable animating below */
+    main#content {
+        background-size: 100% 100%;
+
+        /* Blue theme 1 - Default */
+        background: linear-gradient(to left, #8f94fb, #4e54c8);
+        /* Blue theme 2 */
+        /*background: linear-gradient(45deg, #001f5c, #55bbff);*/
+        /* Blue theme 3 */
+        /*background: linear-gradient(225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%);*/
+        /* Purple theme 1 */
+        /*background: linear-gradient(45deg, #ab19ff, #9019ff, #5a02ff);*/
+        /* Purple theme 2 */
+        /*background: linear-gradient(270deg, #9019ff, #b253ff, #5a02ff);*/
+    }
+
+    /* Animating hue theme */
+    /*main#content {
+        background: linear-gradient(270deg,#9426fc, #b253ff, #5a02ff);
+        background-size: 400% 400%;
+    
+        -webkit-animation: AnimationName 30s ease infinite;
+        -moz-animation: AnimationName 30s ease infinite;
+        animation: AnimationName 30s ease infinite;
+    }
+    
+    @-webkit-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }*/
+
+    /* SVG Theme */
+    /* Generator: https://app.haikei.app */
+    /* Set generator to at least: 1920x1080 */
+    /*main#content {
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-color: #f300b6;
+        background-image: url('./background.svg');
+    }*/
 }
 
-#nav-header .v-toolbar__title {
-    font-size: 24px;
-    vertical-align: middle;
-    color: #00eafb;
-    font-family: monospace;
+/* Mobile background */
+@media screen and (max-width:450px) {
+    main#content {
+        background: linear-gradient(270deg,#EF6DA0, #ff86f5, #5a02ff);
+        background-size: 400% 400%;
+    }
 }
 
-.v-application .warning {
-    background-color: var(--c_blue) !important;
-    border-color: var(--c_blue);
+/* Make nav panel transparent */
+.theme--dark.v-navigation-drawer:not(.v-navigation-drawer--temporary):not(.v-navigation-drawer--is-mobile) {
+    background-color: RGBA(0, 0, 0, 0.4);
 }
 
-.v-application .primary {
-    background-color: var(--c_grey) !important;
-    border-color: var(--c_blue) !important;
+/* Add shadow to panels */
+main .theme--dark.v-card {
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, .59) !important;
 }
 
-.v-application .success--text {
-    color: var(--c_blue) !important;
-    caret-color: var(--c_blue) !important;
+/* Panel title colour */
+.theme--dark.v-toolbar.v-sheet {
+    background-color: #343434;
 }
 
-.v-application .primary--text {
-    color: var(--c_blue) !important;
-    caret-color: var(--c_blue) !important;
+/* Removes panel corners */
+.v-sheet.v-card {
+    border-radius:0px;
 }
 
-.v-application a {
-    color: var(--c_blue);
+/* Remove default blue accent in order to avoid colours clashing */
+.primary--text, .v-application .primary--text {
+    color: #ffffff !important;
+    caret-color: #ffffff !important;
 }
 
- .v-btn:not(.v-btn--outlined).warning {
-    color: var(--c_grey) !important;
+/* Hide secondary active page indicator */
+.active-nav-item[data-v-c6e0628a] {
+    border-right: none; /*4px solid #ff7b00;*/
 }
 
-.v-btn:not(.v-btn--outlined).accent, .v-btn:not(.v-btn--outlined).error, .v-btn:not(.v-btn--outlined).info, .v-btn:not(.v-btn--outlined).primary, .v-btn:not(.v-btn--outlined).secondary, .v-btn:not(.v-btn--outlined).success {
-    color: #f8f8f2 !important;
+/* Remove Mainsail logo which looks out of place */
+#app > div.v-application--wrap > div:nth-child(2) > header > div > a {
+    visibility: hidden;
+    display: none;
 }
 
-.v-application .text-body-2, .v-application .text-button {
-    color: var(--c_blue);
-}
-
-.v-progress-circular__overlay .v-card__text {
-    stroke: var(--c_blue) !important;
-}
-
-.v-slider__track-fill.primary {
-    background-color: var(--c_blue) !important;
-    border-color: var(--c_blue) !important;
-}
-
-.v-slider__thumb.primary {
-    background-color: var(--c_blue) !important;
-    border-color: var(--c_blue) !important;
-}
-
-/*
-    CHANGE content of icons 
-    Material Desgin Icons can be found on https://pictogrammers.github.io/@mdi/font/5.2.45/
-*/
-
-/* "Cog"/Gearwheel to Wrench */
-.mdi-cog:before {
-    content: "\F05B7";
-}
-
-/* Heatbed to Campfire */
-.mdi-radiator-disabled:before {
-    content: "\F0238";
-}
-
-/* Heatbed to Campfire */
-.mdi-radiator:before {
-    content: "\F0238";
-}
-
-/* Thermometer to Temp Chart */
-.mdi-thermometer-lines:before {
-    content: "\F0FA7";
-}
-
-/* Controls to Camera Control Slider */
-.mdi-gamepad:before {
-    content: "\F0B69";
-}
-
-/* Code-Tags to Keyboard */
-.mdi-code-tags:before {
-    content: "\F0313";
-}
-
-/* Dipswitch to Tune */
-.mdi-dip-switch:before {
-    content: "\F062E";
-}
-
-/* Home to Home Group */
-.mdi-home:before {
-    content: "\F0DD4";
-}
-
-/* Arrow-collapse vertical to single bar collapse */
-.mdi-arrow-collapse-vertical:before {
-    content: "\F0622"
-}
-
-/* Send arrow to telegram arrow */
-.mdi-send:before {
-    content: "\F0501"
-}
-
-/* console to boxed console */
-.mdi-console-line:before {
-    content: "\F018D"
-}
-
-/* "Cog"/Gearwheel to Wrench */
-.mdi-wrench:before {
-    content: "\F0493";
-}
-
-/* Dashboard Monitor to Dashboard window */
-.mdi-monitor-dashboard:before {
-    content: "\F0A1D";
-}
-
-/* History to Profile History */
-.mdi-history:before {
-    content: "\F0B56";
-}
-
-/* Printer Dashboard to 3d Printer */
-.mdi-view-dashboard-outline:before {
-    content: "\F042B";
+/* Hide inconsistent layout 'ALL' text for homing */
+#page-container > div > div div.v-card.v-sheet.theme--dark.panel.toolhead-control-panel.mb-3.mb-md-6 > div > div:nth-child(2) > div > div.row.no-gutters > div > button:nth-child(1) > span {
+    font-size: 0;
+    margin-right: -8px;
 }
